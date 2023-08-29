@@ -1,9 +1,8 @@
 package ru.practicum.android.diploma.search.domain
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
+import kotlinx.serialization.Serializable
 
-@Parcelize
+@Serializable
 data class Vacancy(
     val id: Int = 0,
     val iconUri: String = "",
@@ -11,4 +10,4 @@ data class Vacancy(
     val company: String = "Google",
     val salary: String = "300 000 р.",
     val area: String = "Владивосток"
-) : Parcelable
+) 

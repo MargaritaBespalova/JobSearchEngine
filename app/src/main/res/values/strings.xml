@@ -22,4 +22,13 @@
     <string name="country"                          >Country</string>
     <string name="work_place_choose"                >Choose work place</string>
     <string name="region"                           >Region</string>
+    <string name="required_experience"              >Required experience</string>
+    <string name="vacancy_description"              >Vacancy description</string>
+    <string name="key_skills"                       >Key skills</string>
+    <string name="contacts"                         >Contacts</string>
+    <string name="contact_person"                   >Contact person</string>
+    <string name="phone"                            >Phone</string>
+    <string name="e_mail"                           >E-mail</string>
+    <string name="no_info"                          >No information</string>
+
 </resources>
