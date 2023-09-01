@@ -1,11 +1,14 @@
-package ru.practicum.android.diploma.team.ui;
 
+
+package ru.practicum.android.diploma.team.ui;
 
 import android.animation.Animator;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
+
 import androidx.annotation.NonNull;
+
 import ru.practicum.android.diploma.util.AnimationUtils;
 
 public class SwipeHelper implements View.OnTouchListener {
@@ -121,7 +124,7 @@ public class SwipeHelper implements View.OnTouchListener {
                 .setDuration(duration)
                 .setListener(new AnimationUtils.AnimationEndListener() {
                     @Override
-                    public void onAnimationEnd(@NonNull Animator animation) {
+                    public void onAnimationEnd(Animator animation) {
                         mSwipeStack.onViewSwipedToLeft();
                     }
                 });
@@ -182,4 +185,3 @@ public class SwipeHelper implements View.OnTouchListener {
     }
 
 }
-

@@ -1,22 +1,23 @@
 package ru.practicum.android.diploma.util;
 
 import android.animation.Animator;
+import androidx.annotation.NonNull;
 
 public class AnimationUtils {
 
     public static abstract class AnimationEndListener implements Animator.AnimatorListener {
         @Override
-        public void onAnimationStart(Animator animation) {
+        public void onAnimationStart(@NonNull Animator animation) {
             // Do nothing
         }
 
         @Override
-        public void onAnimationCancel(Animator animation) {
+        public void onAnimationCancel(@NonNull Animator animation) {
             // Do nothing
         }
 
         @Override
-        public void onAnimationRepeat(Animator animation) {
+        public void onAnimationRepeat(@NonNull Animator animation) {
             // Do nothing
         }
     }
