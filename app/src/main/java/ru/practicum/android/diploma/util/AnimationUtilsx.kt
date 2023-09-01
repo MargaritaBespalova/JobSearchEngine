@@ -2,7 +2,7 @@ package ru.practicum.android.diploma.util
 
 import android.animation.Animator
 
-class AnimationUtils {
+class AnimationUtilsx {
     abstract class AnimationEndListener : Animator.AnimatorListener {
         override fun onAnimationStart(animation: Animator) {
             // Ignore

@@ -8,11 +8,11 @@
     android:layout_gravity="center"
     android:clipChildren="false">
 
-    <ru.practicum.android.diploma.team.ui.SwipeStack
+    <!--ru.practicum.android.diploma.team.ui.SwipeStack
         android:id="@+id/swipeStack"
         android:layout_width="300dp"
         android:layout_height="520dp"
         android:background="@color/blue"
-        android:padding="10dp" />
+        android:paddingVertical="60dp" /-->
 
 </LinearLayout>
