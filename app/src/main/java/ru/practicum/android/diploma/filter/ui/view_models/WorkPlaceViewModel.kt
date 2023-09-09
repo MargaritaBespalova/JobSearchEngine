@@ -40,6 +40,4 @@ class WorkPlaceViewModel @Inject constructor(
             refreshUI()
         }
     }
-
-
 }

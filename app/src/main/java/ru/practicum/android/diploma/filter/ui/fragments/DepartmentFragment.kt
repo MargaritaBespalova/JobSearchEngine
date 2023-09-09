@@ -6,5 +6,4 @@ import ru.practicum.android.diploma.util.viewBinding
 
 class DepartmentFragment : Fragment() {
      val binding by viewBinding<FragmentDepartmentBinding>()
-
 }

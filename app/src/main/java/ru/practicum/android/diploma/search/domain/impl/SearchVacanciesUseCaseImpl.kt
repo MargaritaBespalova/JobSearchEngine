@@ -11,8 +11,7 @@ import javax.inject.Inject
 class SearchVacanciesUseCaseImpl @Inject constructor(
     private val repository: SearchRepository,
     private val logger: Logger,
-):
-    SearchVacanciesUseCase {
+) : SearchVacanciesUseCase {
     
     override suspend fun search(query: String): Flow<FetchResult> {
         logger.log(thisName, "fun search($query: String): Flow<FetchResult>")

@@ -22,5 +22,4 @@ class FilterRepositoryImpl @Inject constructor(
     override suspend fun saveCountry(key: String, data: String) {
         sharedPrefsStorage.writeData(key = key, data = data)
     }
-
 }

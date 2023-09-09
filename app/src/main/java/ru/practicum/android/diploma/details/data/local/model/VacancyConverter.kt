@@ -22,10 +22,6 @@ class VacancyConverter @Inject constructor() {
         return entities.map { toVacancy(it) }
     }
     
-    fun mapToEntities(vacancies: List<Vacancy>): List<VacancyEntity>{
-        return vacancies.map { toEntity(it) }
-    }
-    
     private fun toVacancy(vacancyEntity: VacancyEntity): Vacancy {
         return with(vacancyEntity) {
             Vacancy(

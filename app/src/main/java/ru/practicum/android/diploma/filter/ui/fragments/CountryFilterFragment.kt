@@ -22,7 +22,6 @@ import ru.practicum.android.diploma.util.thisName
 import ru.practicum.android.diploma.util.viewBinding
 import javax.inject.Inject
 
-
 open class CountryFilterFragment : Fragment(R.layout.fragment_region_department) {
 
     protected open val fragment = "Country"
@@ -35,8 +34,7 @@ open class CountryFilterFragment : Fragment(R.layout.fragment_region_department)
         super.onAttach(context)
         (activity as RootActivity).component.inject(this)
     }
-
-
+    
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

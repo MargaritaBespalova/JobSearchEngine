@@ -16,7 +16,6 @@ class RegionViewModel @Inject constructor(
     logger: Logger
 ) : CountryViewModel(filterInteractor, logger) {
 
-
     var country: String = ""
     var region: Region? = null
 

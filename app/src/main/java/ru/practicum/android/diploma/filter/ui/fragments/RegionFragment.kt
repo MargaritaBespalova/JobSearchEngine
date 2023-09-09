@@ -9,7 +9,6 @@ import ru.practicum.android.diploma.filter.ui.view_models.RegionViewModel
 import ru.practicum.android.diploma.root.RootActivity
 import ru.practicum.android.diploma.root.debounceClickListener
 
-
 class RegionFragment : CountryFilterFragment() {
 
     override val fragment = "Region"

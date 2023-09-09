@@ -42,7 +42,7 @@ class DetailsViewModel @Inject constructor(
             }
         }
         log(thisName, "handleAddToFavsButton $message")
-        _uiState.value = DetailsScreenState.PlayHeartAnimation(isInFavorites, viewModelScope)
+        _uiState.value = DetailsScreenState.PlayHeartAnimation(isInFavorites)
     }
 
    private fun addToFavorites(vacancy: Vacancy) {

@@ -22,8 +22,7 @@ open class CountryViewModel @Inject constructor(
     protected val _uiState: MutableStateFlow<FilterScreenState> =
         MutableStateFlow(FilterScreenState.Default)
     val uiState: StateFlow<FilterScreenState> = _uiState
-
-
+    
     protected open fun getData() {
         viewModelScope.launch(Dispatchers.IO) {
             log("CountryViewModel", "getData()")
@@ -64,10 +63,7 @@ open class CountryViewModel @Inject constructor(
         }
     }
 
-    fun onSearchQueryChanged(text: String) {
-
-    }
+    fun onSearchQueryChanged(text: String) {}
 
     companion object { const val COUNTRY_KEY = "Country" }
-
 }

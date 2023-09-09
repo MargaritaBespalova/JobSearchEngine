@@ -8,5 +8,4 @@ import javax.inject.Inject
 class DepartmentViewModel @Inject constructor(
     private val filterInteractor: FilterInteractor,
     logger: Logger
-) : BaseViewModel(logger){
-}
+) : BaseViewModel(logger)

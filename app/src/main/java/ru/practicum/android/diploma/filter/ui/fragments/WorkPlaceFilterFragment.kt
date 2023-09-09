@@ -21,7 +21,6 @@ import ru.practicum.android.diploma.util.thisName
 import ru.practicum.android.diploma.util.viewBinding
 import javax.inject.Inject
 
-
 class WorkPlaceFilterFragment : Fragment(R.layout.fragment_work_place_filter) {
 
     private val binding by viewBinding<FragmentWorkPlaceFilterBinding>()
@@ -52,8 +51,7 @@ class WorkPlaceFilterFragment : Fragment(R.layout.fragment_work_place_filter) {
             }
         }
     }
-
-
+    
     private fun renderFull() {
         viewModel.log(thisName, "renderFull()")
         renderCountry()

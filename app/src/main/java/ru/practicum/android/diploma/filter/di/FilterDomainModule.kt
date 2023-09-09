@@ -9,5 +9,4 @@ import ru.practicum.android.diploma.filter.domain.impl.FilterInteractorImpl
 interface FilterDomainModule {
     @Binds
     fun bindFilterInteractor(filterInteractorImpl: FilterInteractorImpl): FilterInteractor
-
 }

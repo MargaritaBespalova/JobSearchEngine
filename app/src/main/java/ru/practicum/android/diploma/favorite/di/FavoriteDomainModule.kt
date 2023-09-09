@@ -11,5 +11,4 @@ import ru.practicum.android.diploma.favorite.domain.impl.FavoritesInteractorImpl
 interface FavoriteDomainModule {
     @Binds
     fun bindFavoritesInteractor(favoritesInteractor: FavoritesInteractorImpl): FavoritesInteractor
-
 }

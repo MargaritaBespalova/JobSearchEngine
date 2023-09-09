@@ -8,7 +8,7 @@ import ru.practicum.android.diploma.filter.domain.models.NetworkResponse
 import ru.practicum.android.diploma.search.domain.models.Vacancy
 import javax.inject.Inject
 
-class DetailsInteractorImpl@Inject constructor(
+class DetailsInteractorImpl @Inject constructor(
     private val repository: DetailsRepository
 ) : DetailsInteractor {
     

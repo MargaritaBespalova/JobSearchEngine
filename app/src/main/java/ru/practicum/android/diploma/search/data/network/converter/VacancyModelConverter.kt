@@ -25,7 +25,7 @@ class VacancyModelConverter @Inject constructor(
         return with(this) {
             Vacancy(
                 id = id ?: "",
-                iconUri = employer?.logo_urls?.url240 ?: "",
+                iconUri = employer?.logoUrls?.url240 ?: "",
                 title = name ?: "",
                 company = employer?.name ?: "",
                 salary = createSalary(salary) ?: context.getString(R.string.empty_salary),
@@ -80,13 +80,13 @@ class VacancyModelConverter @Inject constructor(
                 area = area?.name ?: "",
                 salary = createSalary(salary) ?: context.getString(R.string.empty_salary),
                 company = employer?.name ?: "",
-                logo = employer?.logo_urls?.url240 ?: "",
+                logo = employer?.logoUrls?.url240 ?: "",
                 title = name ?: "",
                 contactEmail = contacts?.email ?: "",
                 contactName = contacts?.name ?: "",
-                keySkills = keySkillsToString(key_skills),
+                keySkills = keySkillsToString(keySkills),
                 contactPhones = createPhones(contacts?.phones),
-                alternateUrl = alternate_url ?: "",
+                alternateUrl = alternateUrl ?: "",
             )
         }
     }
@@ -114,5 +114,4 @@ class VacancyModelConverter @Inject constructor(
          list.forEach{ item -> item.areas.flatMap { it?.areas ?: emptyList() }}
          return list.map { Country(id = it.id ?: "", name = it.name ?: "", area = it.areas ) }
     }
-
 }

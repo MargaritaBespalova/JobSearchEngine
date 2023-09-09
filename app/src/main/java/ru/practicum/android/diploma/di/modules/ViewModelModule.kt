@@ -12,17 +12,12 @@ import ru.practicum.android.diploma.filter.ui.view_models.CountryViewModel
 import ru.practicum.android.diploma.filter.ui.view_models.DepartmentViewModel
 import ru.practicum.android.diploma.filter.ui.view_models.RegionViewModel
 import ru.practicum.android.diploma.filter.ui.view_models.WorkPlaceViewModel
-import ru.practicum.android.diploma.root.RootViewModel
 import ru.practicum.android.diploma.search.ui.view_model.SearchViewModel
 import ru.practicum.android.diploma.similars.SimilarVacanciesViewModel
 
 @Module
 interface ViewModelModule {
-    @IntoMap
-    @ViewModelKey(RootViewModel::class)
-    @Binds
-    fun bindRootViewModel(rootViewModel: RootViewModel): ViewModel
-
+    
     @IntoMap
     @ViewModelKey(FavoriteViewModel::class)
     @Binds

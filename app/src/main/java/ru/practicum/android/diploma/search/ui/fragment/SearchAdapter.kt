@@ -10,7 +10,6 @@ import ru.practicum.android.diploma.root.debounceClickListener
 import ru.practicum.android.diploma.search.domain.models.Vacancy
 import javax.inject.Inject
 
-
 class SearchAdapter @Inject constructor (
     private val logger: Logger,
     private val debouncer: Debouncer,

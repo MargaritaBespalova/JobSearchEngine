@@ -57,8 +57,6 @@ class RetrofitClient @Inject constructor(
             logger.log("RetrofitClient", "resultCode = ${result.code()}")
             resultCode = result.code()
         } as CodeResponse
-
     }
-
 }
 

@@ -47,15 +47,6 @@ fun ImageView.setImage(url: String, placeholder: Int, cornerRadius: Int) {
         .transform(CenterInside(), RoundedCorners(cornerRadius))
         .into(this)
 }
-fun ImageView.setImage(url: String, placeholder: Int) {
-    Glide
-        .with(this.context)
-        .load(url)
-        .placeholder(placeholder)
-        .transform(CenterCrop())
-        .into(this)
-}
-
 fun <T : Parcelable?> Bundle.getParcelableFromBundle(key: String, clazz: Class<T>): T? {
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU)
         getParcelable(key, clazz)

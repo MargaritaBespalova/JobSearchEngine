@@ -6,14 +6,13 @@ import kotlinx.serialization.Serializable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-@Serializable
 data class VacancyFullInfo(
     val id: String,
     val experience: String = "",
     val employment: String = "",
     val schedule: String = "",
     val description: String = "",
-    @SerializedName("key_skills") val keySkills: String = "",
+    val keySkills: String = "",
     val area: String = "",
     val salary: String = "",
     val date: String = "",
@@ -23,5 +22,5 @@ data class VacancyFullInfo(
     val contactEmail: String = "",
     val contactName: String = "",
     val contactPhones: List<String> = emptyList(),
-    @SerializedName("alternate_url") val alternateUrl: String? = ""
+    val alternateUrl: String? = ""
 ) : Parcelable

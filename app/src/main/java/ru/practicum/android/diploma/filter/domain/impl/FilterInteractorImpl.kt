@@ -16,7 +16,7 @@ class FilterInteractorImpl @Inject constructor(
     private val searchRepository: SearchRepository,
     private val logger: Logger
 ) : FilterInteractor {
-
+    
     override fun filter() {}
     override suspend fun getCountries(): Flow<NetworkResponse<List<Country>>> {
         logger.log(thisName, "getCountries(): Flow<NetworkResponse<List<Country>>>")
