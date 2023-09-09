@@ -36,6 +36,7 @@ class SearchRepositoryImpl @Inject constructor(
     private val apiHelper: AlternativeRemoteDataSource
 ) : SearchRepository {
 
+    @Suppress("Unchecked_Cast")
     @NewResponse
     override suspend fun searchVacancies(query: String): Either<Failure, Vacancies> {
         return ((apiHelper.doRequest(Request.VacanciesRequest(query))) as Either<Failure, VacanciesResponse>).flatMap {

@@ -27,4 +27,8 @@
         <item name="selectableItemBackground">@drawable/toolbar_ripple</item>
         <item name="android:colorControlHighlight">?attr/blue_white</item>
     </style>
+
+    <style name="SplashScreen" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="background">@color/blue</item>
+    </style>
 </resources>
