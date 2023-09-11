@@ -1,15 +1,6 @@
 # IntelliJ
 *.iml
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-/.idea/kotlinc.xml
-/.idea/gradle.xml
-/.idea/compiler.xml
-/.idea/misc.xml
+.idea/
 
 # Gradle files
 .gradle/
@@ -19,6 +10,7 @@ out/
 # Local configuration file (sdk path, etc)
 local.properties
 develop.properties
+app/schemas/
 
 # Gradle-profiler data
 profile-out*/
@@ -29,7 +21,6 @@ gradle-user-home/
 captures/
 .externalNativeBuild/
 .cxx/
-output.json
 
 # Built application files
 *.apk
@@ -47,3 +38,5 @@ google-services.json
 # OS specific
 .DS_Store
 *.log
+
+

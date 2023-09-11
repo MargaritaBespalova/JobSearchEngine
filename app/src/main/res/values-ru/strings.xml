@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="main_menu"                        >Главная</string>
+    <string name="favorites"                        >Избранное</string>
+    <string name="team_menu"                        >Команда</string>
+    <string name="image"                            >Картинка</string>
+    <string name="filter_settings"                  >Настройки фильтрации</string>
+    <string name="work_place"                       >Место работы</string>
+    <string name="department"                       >Отрасль</string>
+    <string name="expected_salary"                  >Ожидаемая ЗП</string>
+    <string name="enter_the_amount"                 >Введите сумму</string>
+    <string name="dont_show_without_salary"         >Не показывать без зарплаты</string>
+    <string name="vacancy"                          >Вакансия</string>
+    <string name="similar_vacancy"                  >Похожие вакансии</string>
+    <string name="choose_country"                   >Выбор страны</string>
+    <string name="Russia"                           >Россия</string>
+    <string name="search_title"                     >Поиск вакансий</string>
+    <string name="empty_list"                       >Список пуст</string>
+    <string name="search_hint"                      >Введите запрос</string>
+    <string name="country"                          >Страна</string>
+    <string name="work_place_choose"                >Выбор места работы</string>
+    <string name="region"                           >Регион</string>
+    <string name="empty_search_error"               >Таких вакансий нет</string>
+    <string name="loading_message"                  >Идет загрузка…</string>
+    <string name="update"                           >Обновить</string>
+    <string name="choose_region"                    >Выбор региона</string>
+    <string name="choose_department"                >Выбор отрасли</string>
+    <string name="enter_region"                     >Введите регион</string>
+    <string name="enter_department"                 >Введите отрасль</string>
+    <string name="team"                             >Команда</string>
+    <string name="description"                      >Над приложением работали</string>
+    <string name="required_experience"              >Требуемый опыт</string>
+    <string name="vacancy_description"              >Описание вакансии</string>
+    <string name="key_skills"                       >Ключевые навыки</string>
+    <string name="contacts"                         >Контакты</string>
+    <string name="contact_person"                   >Контактное лицо</string>
+    <string name="phone"                            >Телефон</string>
+    <string name="e_mail"                           >E-mail</string>
+    <string name="no_info"                          >Информация отсутствует</string>
+    <string name="apply"                            >Применить</string>
+    <string name="cancel"                           >Сбросить</string>
+    <string name="choose"                           >Выбрать</string>
+    <string name="lead"                             >Старкова Маргарита</string>
+    <string name="oldwise"                          >Гнесный Петр</string>
+    <string name="flash"                            >Костин Олег</string>
+    <string name="meister"                          >Белых Игорь</string>
+    <string name="bitwise"                          >Языков Данила</string>
+    <string name="error"                            >Проверьте подключение к интернету</string>
+    <string name="server_error"                     >Ошибка сервера</string>
+    <string name="similar_vacancies"                >Похожие вакансии</string>
+    <string name="no_data"                          >Данные отсутствуют</string>
+    <string name="alba_description"                 >"\"Каков орел - таковы и горы."\"</string>
+    <string name="bitwise_description"              >"\"Быстро откаченное выложенным не считается."\"</string>
+
+
+    <string name="found"                            >Найдено</string>
+    <string name="from"                             >от</string>
+    <string name="to"                               >до</string>
+    <string name="empty_salary"                     >ЗП не указана</string>
+
+    <plurals name="vacancies">
+        <item quantity="one"                        >%1$d вакансия</item>
+        <item quantity="few"                        >%1$d вакансии</item>
+        <item quantity="many"                       >%1$d вакансий</item>
+        <item quantity="other"                      >%1$d вакансий</item>
+    </plurals>
+
+</resources>
