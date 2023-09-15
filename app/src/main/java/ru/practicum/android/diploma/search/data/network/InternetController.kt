@@ -11,6 +11,7 @@ class InternetController @Inject constructor(
     private val context: Context,
     private val logger: Logger,
 ) {
+    
     fun isInternetAvailable(): Boolean {
         val connectivityManager = context.getSystemService(
             Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -24,7 +25,7 @@ class InternetController @Inject constructor(
                 capabilities.hasTransport(NetworkCapabilities.TRANSPORT_BLUETOOTH) -> return true
             }
         }
-        logger.log(thisName,"isInternetAvailable(): false")
+        logger.log(thisName, "isInternetAvailable(): false")
         return false
     }
 }

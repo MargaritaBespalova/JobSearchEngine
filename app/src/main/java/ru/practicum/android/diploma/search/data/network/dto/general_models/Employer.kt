@@ -11,5 +11,5 @@ data class Employer(
     @SerialName("logo_urls") val logoUrls: LogoUrls? = LogoUrls(),
     @SerialName("name") val name: String? = "",
     @SerialName("trusted") val trusted: Boolean? = false,
-    @SerialName("url")  val url: String? = "",
+    @SerialName("url") val url: String? = "",
 )

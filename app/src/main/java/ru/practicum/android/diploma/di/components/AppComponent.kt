@@ -6,6 +6,7 @@ import dagger.Component
 import ru.practicum.android.diploma.app.App
 import ru.practicum.android.diploma.details.di.DetailsDataModule
 import ru.practicum.android.diploma.details.di.DetailsDomainModule
+import ru.practicum.android.diploma.di.annotations.AppEmail
 import ru.practicum.android.diploma.di.annotations.ApplicationScope
 import ru.practicum.android.diploma.di.annotations.BaseUrl
 import ru.practicum.android.diploma.di.annotations.PrefsKey
@@ -17,6 +18,7 @@ import ru.practicum.android.diploma.filter.di.FilterDomainModule
 import ru.practicum.android.diploma.search.di.SearchDataModule
 import ru.practicum.android.diploma.search.di.SearchDomainModule
 import ru.practicum.android.diploma.sharing.di.SharingModule
+import ru.practicum.android.diploma.similars.di.SimilarDomainModule
 
 @ApplicationScope
 
@@ -31,7 +33,8 @@ import ru.practicum.android.diploma.sharing.di.SharingModule
         FavoritesDataModule::class,
         FilterDomainModule::class,
         FilterDataModule::class,
-        SharingModule::class
+        SharingModule::class,
+        SimilarDomainModule::class
     ]
 )
 
@@ -44,7 +47,8 @@ interface AppComponent {
         fun create(
             @BindsInstance context: Context,
             @BindsInstance @BaseUrl baseUrl: String,
-            @BindsInstance @PrefsKey prefsKey: String
+            @BindsInstance @PrefsKey prefsKey: String,
+            @BindsInstance @AppEmail appEmail: String
         ): AppComponent
     }
 }

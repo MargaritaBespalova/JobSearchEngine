@@ -1,15 +1,18 @@
 package ru.practicum.android.diploma.search.data.network.converter
 
 import android.content.Context
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import ru.practicum.android.diploma.R
-import ru.practicum.android.diploma.details.data.dto.VacancyFullInfoModelDto
-import ru.practicum.android.diploma.details.data.dto.assistants.KeySkillDto
+import ru.practicum.android.diploma.details.data.local.model.VacancyFullInfoEntity
+import ru.practicum.android.diploma.details.data.network.dto.VacancyFullInfoModelDto
+import ru.practicum.android.diploma.details.data.network.dto.assistants.KeySkillDto
 import ru.practicum.android.diploma.details.domain.models.VacancyFullInfo
-import ru.practicum.android.diploma.filter.domain.models.Country
-import ru.practicum.android.diploma.search.data.network.dto.CountryDto
 import ru.practicum.android.diploma.search.data.network.dto.VacancyDto
 import ru.practicum.android.diploma.search.data.network.dto.general_models.Phone
 import ru.practicum.android.diploma.search.data.network.dto.general_models.Salary
+import ru.practicum.android.diploma.search.data.network.dto.response.VacanciesResponse
+import ru.practicum.android.diploma.search.domain.models.Vacancies
 import ru.practicum.android.diploma.search.domain.models.Vacancy
 import javax.inject.Inject
 
@@ -31,6 +34,18 @@ class VacancyModelConverter @Inject constructor(
                 salary = createSalary(salary) ?: context.getString(R.string.empty_salary),
                 area = area?.name ?: "",
                 date = publishedAt ?: "",
+            )
+        }
+    }
+
+    fun vacanciesResponseToVacancies(vacanciesResponse: VacanciesResponse) : Vacancies{
+        return with(vacanciesResponse) {
+            Vacancies(
+                found = found,
+                items = mapList(items),
+                page = page,
+                pages = pages,
+                perPage = perPage,
             )
         }
     }
@@ -86,12 +101,80 @@ class VacancyModelConverter @Inject constructor(
                 contactName = contacts?.name ?: "",
                 keySkills = keySkillsToString(keySkills),
                 contactPhones = createPhones(contacts?.phones),
+                contactComment = contacts?.phones?.getOrNull(0)?.comment ?: "",
                 alternateUrl = alternateUrl ?: "",
             )
         }
     }
 
-    private fun keySkillsToString(keySkills: List<KeySkillDto>?): String {
+    fun toFullInfoEntity(vacancy: VacancyFullInfo): VacancyFullInfoEntity {
+        return with(vacancy) {
+            VacancyFullInfoEntity(
+                id = id,
+                experience = experience,
+                employment = employment,
+                schedule = schedule,
+                description = description,
+                keySkills = keySkills,
+                area = area,
+                salary = salary,
+                date = date,
+                company = company,
+                logo = logo,
+                title = title,
+                contactEmail = contactEmail,
+                contactName = contactName,
+                contactComment = contactComment,
+                contactPhones = Json.encodeToString(contactPhones),
+                alternateUrl = alternateUrl
+            )
+        }
+    }
+
+    fun mapToVacancies(entities: List<VacancyFullInfoEntity>): List<Vacancy>{
+        return entities.map { toVacancy(it) }
+    }
+
+    private fun toVacancy(vacancyEntity: VacancyFullInfoEntity): Vacancy {
+        return with(vacancyEntity) {
+            Vacancy(
+                id = id,
+                iconUri = logo,
+                title = title,
+                company = company,
+                salary = salary,
+                area = area,
+                date = date,
+            )
+        }
+    }
+
+    fun entityToModel(vacancyEntity: VacancyFullInfoEntity): VacancyFullInfo {
+        return with(vacancyEntity) {
+            VacancyFullInfo(
+                id = id,
+                experience = experience,
+                employment = employment,
+                schedule = schedule,
+                description = description,
+                keySkills = keySkills,
+                area = area,
+                salary = salary,
+                date = date,
+                company = company,
+                logo = logo,
+                title = title,
+                contactEmail = contactEmail,
+                contactName = contactName,
+                contactComment = contactComment,
+                contactPhones = Json.decodeFromString(contactPhones),
+                alternateUrl = alternateUrl,
+                isInFavorite = true
+            )
+        }
+    }
+
+    private fun keySkillsToString(keySkills:List<KeySkillDto>?): String {
         if (keySkills != null) {
             return keySkills.map { "• ${it.name}" }
                 .joinToString("\n")
@@ -108,10 +191,5 @@ class VacancyModelConverter @Inject constructor(
             phoneList.add(pho, number)
         }
         return phoneList
-    }
-
-     fun countryDtoToCountry( list : List<CountryDto>): List<Country>{
-         list.forEach{ item -> item.areas.flatMap { it?.areas ?: emptyList() }}
-         return list.map { Country(id = it.id ?: "", name = it.name ?: "", area = it.areas ) }
     }
 }

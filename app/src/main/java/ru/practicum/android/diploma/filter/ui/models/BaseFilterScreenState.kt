@@ -1,7 +1,8 @@
 package ru.practicum.android.diploma.filter.ui.models
 
+import ru.practicum.android.diploma.filter.domain.models.SelectedFilter
+
 sealed interface BaseFilterScreenState {
     object Empty : BaseFilterScreenState
-    object Choose : BaseFilterScreenState
-    object Apply : BaseFilterScreenState
+    data class Content(val selectedFilter: SelectedFilter) : BaseFilterScreenState
 }
