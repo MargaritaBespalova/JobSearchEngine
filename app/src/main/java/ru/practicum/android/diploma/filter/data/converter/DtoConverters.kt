@@ -11,13 +11,14 @@ import ru.practicum.android.diploma.filter.domain.models.Region
 fun mapRegionListDtoToRegionList(response: RegionListDto): List<Region> {
     val regionDtoList = mutableListOf<RegionDto>()
     response.areas?.forEach { regionDto ->
-        if (regionDto != null) {
-            regionDtoList.add(regionDto)
-        }
+        regionDtoList.add(regionDto)
     }
+    
     val citiesList = regionDtoList.map { Region(id = it.id ?: "", name = it.name ?: "") }
-    val minorCitiesList = regionDtoList.flatMap { it.areas ?: emptyList() }
-        .map { Region(id = it?.id ?: "", name = it?.name ?: "") }.sortedBy { it.name }
+    val minorCitiesList = regionDtoList
+        .flatMap { it.areas ?: emptyList() }
+        .map { Region(id = it.id ?: "", name = it.name ?: "") }
+        .sortedBy { it.name }
         .toMutableList()
     minorCitiesList.addAll(citiesList)
     return minorCitiesList
@@ -30,7 +31,7 @@ fun countryDtoToCountry(list: List<CountryDto>): List<Country> {
         .sortedWith(compareBy({ it.name == OTHER }, { it.name }))
 }
 fun countryDtoListToAllRegionList(list: List<CountryDto>): List<Region> {
-    return list.flatMap { it.areas ?: emptyList() }
+    return list.flatMap { it.areas }
         .map { Region(id = it?.id ?: "", name = it?.name ?: "") }
 }
 
