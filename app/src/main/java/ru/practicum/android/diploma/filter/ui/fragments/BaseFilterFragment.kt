@@ -177,7 +177,7 @@ class BaseFilterFragment : Fragment(R.layout.fragment_main_filter) {
                 viewModel.changeSalary(text.toString())
                 amountTextLayout.endIconMode = TextInputLayout.END_ICON_CLEAR_TEXT
                 amountTextLayout.endIconDrawable =
-                    AppCompatResources.getDrawable(requireContext(), R.drawable.close_btn)
+                    AppCompatResources.getDrawable(requireContext(), R.drawable.ic_clear)
             }
         }
     }
