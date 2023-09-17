@@ -120,7 +120,7 @@ class WorkPlaceFilterFragment : Fragment(R.layout.fragment_work_place_filter) {
         if (view.text.isEmpty()) {
             findNavController().navigate(
                 WorkPlaceFilterFragmentDirections
-                    .actionWorkPlaceFragmentToRegionFragment(viewModel.selectedFilter)
+                    .actionWorkPlaceFragmentToCountryFragment(viewModel.selectedFilter)
             )
         } else {
             view.setText("")

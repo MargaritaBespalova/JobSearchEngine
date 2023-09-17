@@ -1,8 +1,5 @@
 package ru.practicum.android.diploma.util
 
-import android.os.Build
-import android.os.Bundle
-import android.os.Parcelable
 import android.util.Log
 import android.widget.ImageView
 import com.bumptech.glide.Glide
@@ -13,7 +10,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-const val DELAY_600_MILLIS = 600L
+const val DELAY_400_MILLIS = 400L
 const val DELAY_2000_MILLIS = 2000L
 
 val <T> T.thisName: String
@@ -47,13 +44,4 @@ fun ImageView.setImage(url: String, placeholder: Int, cornerRadius: Int) {
         .placeholder(placeholder)
         .transform(CenterInside(), RoundedCorners(cornerRadius))
         .into(this)
-}
-
-fun <T : Parcelable?> Bundle.getParcelableFromBundle(key: String, clazz: Class<T>): T? {
-    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU)
-        getParcelable(key, clazz)
-    else {
-        @Suppress("DEPRECATION")
-        getParcelable<T>(key)
-    }
 }

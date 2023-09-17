@@ -221,8 +221,7 @@
                 style="@style/Html_h1_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/no_info"
-                android:textColor="?attr/colorSecondary" />
+                android:text="@string/no_info" />
 
             <TextView
                 android:id="@+id/tv_email"
@@ -269,8 +268,7 @@
                 style="@style/Html_h1_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/no_info"
-                android:textColor="?attr/colorSecondary" />
+                android:text="@string/no_info" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button_same_vacancy"

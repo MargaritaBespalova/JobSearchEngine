@@ -153,7 +153,7 @@ class BaseFilterFragment : Fragment(R.layout.fragment_main_filter) {
     private fun showAreaField(selectedFilter: SelectedFilter) {
         val workPlace = StringBuilder()
         workPlace.append(selectedFilter.country?.name ?: "")
-        if (!selectedFilter.region?.name.isNullOrEmpty()) workPlace.append(", ")
+        if (!selectedFilter.country?.name.isNullOrEmpty() && !selectedFilter.region?.name.isNullOrEmpty()) workPlace.append(", ")
         workPlace.append(selectedFilter.region?.name ?: "")
         with(binding) {
             workPlaceText.setText(workPlace)
