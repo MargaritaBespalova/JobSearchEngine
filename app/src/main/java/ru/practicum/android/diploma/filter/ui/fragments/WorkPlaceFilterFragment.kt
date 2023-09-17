@@ -29,8 +29,7 @@ import javax.inject.Inject
 
 class WorkPlaceFilterFragment : Fragment(R.layout.fragment_work_place_filter) {
 
-    @Inject
-    lateinit var debouncer: Debouncer
+    @Inject lateinit var debouncer: Debouncer
     private val args by navArgs<WorkPlaceFilterFragmentArgs>()
     private val binding by viewBinding<FragmentWorkPlaceFilterBinding>()
     private val viewModel: WorkPlaceViewModel by viewModels { (activity as RootActivity).viewModelFactory }
