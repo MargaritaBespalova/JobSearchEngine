@@ -218,7 +218,7 @@
 
             <TextView
                 android:id="@+id/tv_contacts_name"
-                style="@style/Html_h1_style"
+                style="@style/Html_h2_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/no_info" />
@@ -233,7 +233,7 @@
 
             <TextView
                 android:id="@+id/tv_contacts_email"
-                style="@style/Html_h1_style"
+                style="@style/Html_h2_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/no_info"
@@ -249,7 +249,7 @@
 
             <TextView
                 android:id="@+id/tv_contacts_phone"
-                style="@style/Html_h1_style"
+                style="@style/Html_h2_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/no_info"
@@ -265,7 +265,7 @@
 
             <TextView
                 android:id="@+id/tv_contacts_comment"
-                style="@style/Html_h1_style"
+                style="@style/Html_h2_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/no_info" />
