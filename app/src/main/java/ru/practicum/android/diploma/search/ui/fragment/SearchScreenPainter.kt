@@ -99,7 +99,6 @@ class SearchScreenPainter(
         when (failure) {
             is Failure.Offline -> showToast(R.string.no_internet_message)
             else -> showToast(R.string.server_error)
-            
         }
     }
     
@@ -123,7 +122,6 @@ class SearchScreenPainter(
             placeholderImage.visibility = View.VISIBLE
             progressBar.visibility = View.GONE
             btnUpdate.visibility = View.GONE
-            
         }
     }
     

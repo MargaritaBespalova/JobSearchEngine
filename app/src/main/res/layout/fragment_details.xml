@@ -103,14 +103,22 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_salary">
 
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+
+                <FrameLayout
+                    android:layout_width="@dimen/size_48dp"
+                    android:layout_height="@dimen/size_48dp"
                     android:layout_marginStart="@dimen/margin_16dp"
                     android:layout_marginTop="@dimen/margin_16dp"
-                    app:tint="?attr/filter_text_color"
-                    android:src="@drawable/ic_placeholder_company" />
+                    android:background="@drawable/shape_item_details">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="1dp"
+                    android:src="@drawable/ic_placeholder_company"
+                    android:contentDescription="@string/placeholder_image" />
+                </FrameLayout>
 
                 <TextView
                     android:id="@+id/tv_name_of_company"
@@ -124,7 +132,6 @@
                     android:ellipsize="end"
                     android:text="@string/no_info"
                     app:layout_constraintBaseline_toBaselineOf="@id/imageView" />
-                    />
 
                 <TextView
                     android:id="@+id/tv_area"
@@ -137,8 +144,7 @@
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:text="@string/no_info"
-                    android:layout_marginBottom="@dimen/margin_16dp"
-                    />
+                    android:layout_marginBottom="@dimen/margin_16dp" />
             </androidx.cardview.widget.CardView>
 
             <TextView

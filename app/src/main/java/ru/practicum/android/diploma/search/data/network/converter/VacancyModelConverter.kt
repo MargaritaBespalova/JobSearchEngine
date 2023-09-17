@@ -126,7 +126,7 @@ class VacancyModelConverter @Inject constructor(
                 contactName = contactName,
                 contactComment = contactComment,
                 contactPhones = Json.encodeToString(contactPhones),
-                alternateUrl = alternateUrl
+                alternativeUrl = alternateUrl
             )
         }
     }
@@ -168,7 +168,7 @@ class VacancyModelConverter @Inject constructor(
                 contactName = contactName,
                 contactComment = contactComment,
                 contactPhones = Json.decodeFromString(contactPhones),
-                alternateUrl = alternateUrl,
+                alternateUrl = alternativeUrl,
                 isInFavorite = true
             )
         }
