@@ -1,6 +1,7 @@
 # IntelliJ
 *.iml
 .idea/
+*.json
 
 # Gradle files
 .gradle/
@@ -23,7 +24,6 @@ captures/
 .cxx/
 
 # Built application files
-*.apk
 *.aar
 *.ap_
 *.aab

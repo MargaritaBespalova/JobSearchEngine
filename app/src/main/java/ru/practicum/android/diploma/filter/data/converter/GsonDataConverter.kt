@@ -1,8 +1,6 @@
 package ru.practicum.android.diploma.filter.data.converter
 
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import ru.practicum.android.diploma.filter.domain.models.Country
 import java.lang.reflect.Type
 import javax.inject.Inject
 
@@ -15,5 +13,4 @@ class GsonDataConverter @Inject constructor(
 
     override fun <T> dataFromJson(json: String, type: Type): T =
         gson.fromJson(json, type)
-
 }

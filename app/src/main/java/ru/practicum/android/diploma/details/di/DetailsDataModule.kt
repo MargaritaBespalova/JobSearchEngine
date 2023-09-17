@@ -9,8 +9,6 @@ import ru.practicum.android.diploma.details.data.local.LocalDataSource
 import ru.practicum.android.diploma.details.data.local.LocalDataSourceDetailsImpl
 import ru.practicum.android.diploma.details.data.local.db.FavoriteDao
 import ru.practicum.android.diploma.details.data.local.db.FavoriteVacanciesDb
-import ru.practicum.android.diploma.details.data.network.RemoteDataSource
-import ru.practicum.android.diploma.details.data.network.RemoteDataSourceImpl
 import ru.practicum.android.diploma.details.domain.DetailsRepository
 import ru.practicum.android.diploma.di.annotations.ApplicationScope
 
@@ -18,16 +16,13 @@ import ru.practicum.android.diploma.di.annotations.ApplicationScope
 class DetailsDataModule {
     @ApplicationScope
     @Provides
-     fun bindDetailsRepository(detailsRepositoryImpl: DetailsRepositoryImpl): DetailsRepository{
+     fun bindDetailsRepository(detailsRepositoryImpl: DetailsRepositoryImpl): DetailsRepository {
          return detailsRepositoryImpl
      }
+
     @Provides
     fun bindDLocalDataSource(localDataSource: LocalDataSourceDetailsImpl): LocalDataSource{
         return localDataSource
-    }
-    @Provides
-    fun bindRemoteDataSource(remoteDataSourceImpl: RemoteDataSourceImpl): RemoteDataSource{
-        return remoteDataSourceImpl
     }
 
     @Provides

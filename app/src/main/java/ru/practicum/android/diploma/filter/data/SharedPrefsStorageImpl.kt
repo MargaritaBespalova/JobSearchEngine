@@ -6,7 +6,7 @@ import ru.practicum.android.diploma.Logger
 import ru.practicum.android.diploma.filter.data.converter.DataConverter
 import ru.practicum.android.diploma.filter.data.local_storage.LocalStorage
 import ru.practicum.android.diploma.filter.data.model.DataType
-import ru.practicum.android.diploma.filter.domain.models.Country
+import ru.practicum.android.diploma.filter.domain.models.SelectedFilter
 import ru.practicum.android.diploma.util.thisName
 import java.util.concurrent.locks.ReentrantReadWriteLock
 import javax.inject.Inject
@@ -21,8 +21,9 @@ class SharedPrefsStorageImpl @Inject constructor(
 ) : LocalStorage {
 
     private val lock = ReentrantReadWriteLock()
+    
     override fun <T> writeData(key: String, data: T) {
-        logger.log(thisName, "writeData(key: $key, $data: T)")
+        logger.log(thisName, "writeData($key: String, $data: T)")
         lock.write {
             when (data) {
                 is Boolean -> preferences.edit().putBoolean(key, data).apply()
@@ -34,33 +35,23 @@ class SharedPrefsStorageImpl @Inject constructor(
     }
 
     override fun <T> readData(key: String, defaultValue: DataType): T {
-        logger.log(thisName, "readData(key: $key, $defaultValue: T): T")
+        logger.log(thisName, "readData($key: String, defaultValue: T): T")
         lock.read {
             return when (defaultValue) {
                 DataType.BOOLEAN -> preferences.getBoolean(key, false) as T
                 DataType.INT     -> preferences.getInt(key, 0) as T
                 DataType.STRING  -> preferences.getString(key, "") as T
-                DataType.COUNTRY -> preferences.getCountry(key) as T
-                DataType.LIST    -> preferences.getList(key, null) as T
+                DataType.OBJECT  -> preferences.getSelectedData(key) as T
             }
         }
     }
 
-    private fun <T> SharedPreferences.getList(key: String, defaultValue: T): T {
-        logger.log(thisName, "getList(key: $key, defaultValue: T): T")
+    private fun <T> SharedPreferences.getSelectedData(key: String): T {
         return getString(key, null)
-            ?.let { converter.dataFromJson(it, defaultValue!!::class.java) }
-            ?: defaultValue
+            ?.let { converter.dataFromJson(it, type<SelectedFilter>()) }
+            ?: SelectedFilter() as T
     }
 
-    private fun <T> SharedPreferences.getCountry(key: String): T {
-        logger.log(thisName, "getCountry($key: String): T")
-        return getString(key, null)
-            ?.let { converter.dataFromJson(it, genericType<Country>()) }
-            ?: null as T
-    }
-
-    private inline fun <reified T> genericType() = object: TypeToken<T>() {}.type
-
+    private inline fun <reified T> type() = object: TypeToken<T>() {}.type
 }
 

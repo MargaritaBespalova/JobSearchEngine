@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical" >
+
         <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"
@@ -41,6 +42,8 @@
             style="@style/Developers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="?attr/colorOnPrimary"
             android:text="@string/lead" />
 
         <TextView
@@ -48,6 +51,8 @@
             style="@style/Developers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="?attr/colorOnPrimary"
             android:text="@string/oldwise" />
 
         <TextView
@@ -55,6 +60,8 @@
             style="@style/Developers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="?attr/colorOnPrimary"
             android:text="@string/flash" />
 
         <TextView
@@ -62,6 +69,8 @@
             style="@style/Developers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="?attr/colorOnPrimary"
             android:text="@string/meister" />
 
         <TextView
@@ -69,8 +78,13 @@
             style="@style/Developers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="?attr/colorOnPrimary"
             android:text="@string/bitwise" />
 
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="20"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
-
 </androidx.cardview.widget.CardView>

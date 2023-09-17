@@ -16,28 +16,23 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/searchToolbar"
+            style="@style/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_scrollFlags="scroll|enterAlways">
-
-            <TextView
-                android:id="@+id/textToolbar"
-                style="@style/ToolBarStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/search_title" />
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/ToolbarRipple"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:navigationIcon="@null"
+            app:title="@string/search_title">
 
             <ImageView
                 android:id="@+id/filterBtnToolbar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:layout_marginEnd="@dimen/margin_8dp"
-                android:contentDescription="@string/filter_settings"
+                android:layout_marginEnd="@dimen/margin_12dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@drawable/ic_filter" />
+                android:contentDescription="@string/filter_settings" />
         </androidx.appcompat.widget.Toolbar>
-
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/search_input_layout"
@@ -46,6 +41,7 @@
             android:layout_marginEnd="@dimen/margin_16dp"
             android:layout_marginTop="@dimen/margin_16dp"
             android:hint="@string/search_hint"
+            app:endIconContentDescription="@string/search_title"
             app:hintAnimationEnabled="false"
             app:layout_scrollFlags="scroll|enterAlways">
 
@@ -54,7 +50,6 @@
                 style="@style/SearchEditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="text"
                 android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -101,5 +96,17 @@
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/searching" />
+
+<com.google.android.material.button.MaterialButton
+    android:id="@+id/btnUpdate"
+    style="@style/FilterBottomButtonsStyle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_16dp"
+    android:layout_gravity="bottom|center"
+    android:background="@drawable/bt_round_drawable"
+    android:textColor="?attr/colorOnSecondary"
+    app:cornerRadius="@dimen/size_12dp"
+    android:text="@string/update"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

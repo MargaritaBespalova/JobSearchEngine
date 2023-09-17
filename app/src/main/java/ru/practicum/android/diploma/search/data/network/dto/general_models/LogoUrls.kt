@@ -5,6 +5,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class LogoUrls(
-    @SerialName("240")val url240: String? = "",
+    @SerialName("240") val url240: String? = "",
     @SerialName("original") val original: String? = "",
 )

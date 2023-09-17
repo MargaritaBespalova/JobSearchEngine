@@ -15,6 +15,7 @@ import ru.practicum.android.diploma.filter.domain.api.FilterRepository
 
 @Module
 class FilterDataModule {
+    
     @Provides
     fun provideFilterRepository(filterRepositoryImpl: FilterRepositoryImpl): FilterRepository {
         return filterRepositoryImpl
