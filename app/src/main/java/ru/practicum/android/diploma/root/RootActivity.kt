@@ -51,7 +51,6 @@ class RootActivity : AppCompatActivity() {
                 R.id.similarsVacancyFragment,
                 R.id.workPlaceFilterFragment,
                 R.id.countryFilterFragment,
-                R.id.workPlaceFilterFragment,
                 R.id.regionFragment,
                 R.id.departmentFragment -> hideBottomNav()
                 else -> showBottomNav()
