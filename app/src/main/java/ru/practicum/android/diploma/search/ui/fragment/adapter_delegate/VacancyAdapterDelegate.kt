@@ -48,7 +48,6 @@ class VacancyAdapterDelegate(
                 if (item.area.isNotEmpty()) "${item.title}, ${item.area}"
                 else item.title
 
-            val cornerRadius = itemView.resources.getDimensionPixelSize(R.dimen.size_12dp)
             binding.title.text = titleAndArea
             binding.company.text = item.company
             binding.value.text = item.salary

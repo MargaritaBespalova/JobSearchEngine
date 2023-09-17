@@ -29,7 +29,7 @@ class SimilarRepositoryImpl @Inject constructor(
                 Either.Left(Failure.NotFound())
             } else {
                 logger.log(thisName, "getSimilarVacancies: FOUND = ${it.found}")
-                Either.Right(converter.mapList(it.items!!))
+                Either.Right(converter.mapList(it.items))
             }
         }
     }
