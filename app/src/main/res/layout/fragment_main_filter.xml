@@ -24,11 +24,14 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/workPlace"
         style="@style/FilterStyle"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_60dp"
         android:layout_marginTop="@dimen/margin_16dp"
         android:hint="@string/work_place"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/work_place_text"
             style="@style/SearchEditTextStyle"
@@ -57,17 +60,22 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/department"
         style="@style/FilterStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:hint="@string/department"
-        android:paddingStart="0dp"
-        android:paddingEnd="@dimen/size_30dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/checkbox"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/workPlace">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/industry_text"
             style="@style/SearchEditTextStyle"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences|textMultiLine"
+            android:maxLines="5"
+            android:minHeight="@dimen/size_60dp"
+            android:singleLine="false" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <FrameLayout

@@ -33,7 +33,7 @@ class BaseFilterViewModel @Inject constructor(
     }
 
     fun changeArea() {
-        selectedFilter = selectedFilter.copy(country = null)
+        selectedFilter = selectedFilter.copy(country = null, region = null)
         log(thisName, "changeArea: country = null")
     }
 

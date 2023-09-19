@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import ru.practicum.android.diploma.R
 import ru.practicum.android.diploma.app.appComponent
 import ru.practicum.android.diploma.databinding.ActivityRootBinding
@@ -48,7 +51,6 @@ class RootActivity : AppCompatActivity() {
                 R.id.similarsVacancyFragment,
                 R.id.workPlaceFilterFragment,
                 R.id.countryFilterFragment,
-                R.id.workPlaceFilterFragment,
                 R.id.regionFragment,
                 R.id.departmentFragment -> hideBottomNav()
                 else -> showBottomNav()
@@ -57,12 +59,19 @@ class RootActivity : AppCompatActivity() {
     }
     
     private fun hideBottomNav() {
-        viewModel.log(thisName, "hideBottomNav()")
-        binding.bottomNavigationView.visibility = View.GONE
+        lifecycleScope.launch {
+            delay(DELAY_MILLIS)
+            viewModel.log(thisName, "hideBottomNav()")
+            binding.bottomNavigationView.visibility = View.GONE
+        }
     }
     
     private fun showBottomNav() {
         viewModel.log(thisName, "showBottomNav()")
         binding.bottomNavigationView.visibility = View.VISIBLE
+    }
+    
+    companion object {
+        private const val DELAY_MILLIS = 50L
     }
 }

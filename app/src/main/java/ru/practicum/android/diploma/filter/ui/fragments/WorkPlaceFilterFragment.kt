@@ -57,13 +57,15 @@ class WorkPlaceFilterFragment : Fragment(R.layout.fragment_work_place_filter) {
             changeIcon(countryText, countryIcon)
             regionText.setText(data.region?.name ?: "")
             changeIcon(regionText, regionIcon)
-            showButton(countryText.text)
+            showButton(countryText.text, regionText.text)
         }
     }
 
-    private fun showButton(country: Editable?) {
-        if (country.isNullOrEmpty()) binding.chooseBtn.visibility = View.GONE
-        else binding.chooseBtn.visibility = View.VISIBLE
+    private fun showButton(country: Editable?, region: Editable?) {
+        if (!country.isNullOrEmpty() || !region.isNullOrEmpty())
+            binding.chooseBtn.visibility =
+                View.VISIBLE
+        else binding.chooseBtn.visibility = View.GONE
     }
 
     private fun initListeners() {
@@ -97,18 +99,27 @@ class WorkPlaceFilterFragment : Fragment(R.layout.fragment_work_place_filter) {
             }
             countryText.doOnTextChanged { text, _, _, _ ->
                 renderEditTextColor(countryContainer, text)
+                if (text.isNullOrEmpty() && regionText.text.isNullOrEmpty())
+                    binding.chooseBtn.visibility = View.GONE
+                else
+                    binding.chooseBtn.visibility = View.VISIBLE
             }
             regionText.doOnTextChanged { text, _, _, _ ->
                 renderEditTextColor(regionContainer, text)
+                if (text.isNullOrEmpty() && countryText.text.isNullOrEmpty())
+                    binding.chooseBtn.visibility = View.GONE
+                else
+                    binding.chooseBtn.visibility = View.VISIBLE
             }
         }
+
     }
 
     private fun onCountryIconPush(view: EditText) {
         if (view.text.isEmpty()) {
             findNavController().navigate(
                 WorkPlaceFilterFragmentDirections
-                    .actionWorkPlaceFragmentToRegionFragment(viewModel.selectedFilter)
+                    .actionWorkPlaceFragmentToCountryFragment(viewModel.selectedFilter)
             )
         } else {
             view.setText("")
@@ -129,12 +140,12 @@ class WorkPlaceFilterFragment : Fragment(R.layout.fragment_work_place_filter) {
             changeIcon(binding.regionText, binding.regionIcon)
         }
     }
-    
+
     private fun changeIcon(editText: EditText, view: ImageView) {
         if (editText.text.isEmpty()) view.setImageResource(R.drawable.leading_icon)
         else view.setImageResource(R.drawable.ic_clear)
     }
-    
+
     private fun renderEditTextColor(view: TextInputLayout, text: CharSequence?) {
         if (!text.isNullOrEmpty()) {
             view.defaultHintTextColor = ContextCompat.getColorStateList(

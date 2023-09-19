@@ -33,9 +33,9 @@ class SearchViewModel @Inject constructor(
     private var vacancyList: List<Vacancy> = emptyList()
     private var searchJob: Job? = null
     private var isNextPageLoading: Boolean = false
-    private var found: Int = 0
-    private var maxPages: Int = 0
-    private var currentPage: Int = 0
+    private var found: Int = FIRST_PAGE
+    private var maxPages: Int = FIRST_PAGE
+    private var currentPage: Int = FIRST_PAGE
     private var selectedFilter: SelectedFilter = SelectedFilter.empty
     
     private val onSearchDebounce =
@@ -50,8 +50,7 @@ class SearchViewModel @Inject constructor(
         logger.log(thisName, "+++onSearchQueryChanged+++ -> $query: String")
         if (query == latestSearchQuery) return
         latestSearchQuery = query
-        currentPage = FIRST_PAGE
-        vacancyList = emptyList()
+        resetPagesState()
         
         if (query.isEmpty()) {
             searchJob?.cancel()
@@ -76,6 +75,7 @@ class SearchViewModel @Inject constructor(
     }
     
     fun onScrolledBottom() {
+        logger.log(thisName, "+++onScrolledBottom+++")
         if (!isNextPageLoading && currentPage < maxPages) {
             logger.log(thisName, "+++onScrolledBottom+++ -> currentPage = $currentPage, maxPages = $maxPages")
             isNextPageLoading = true
@@ -87,16 +87,9 @@ class SearchViewModel @Inject constructor(
         }
     }
     
-    fun onViewDestroyed() {
-        currentPage = FIRST_PAGE
-        vacancyList = emptyList()
-    }
-    
     override fun handleFailure(failure: Failure) {
         super.handleFailure(failure)
-        logger.log(thisName, "handleFailure -> $failure")
-        logger.log(thisName, "handleFailure, currentPage -> $currentPage")
-        logger.log(thisName, "handleFailure, maxPages -> $maxPages")
+        logger.log(thisName, "+++handleFailure+++ -> maxPages = $maxPages, currentPage = $currentPage")
         if (currentPage == maxPages) _uiState.value = SearchUiState.Error(failure)
         else _uiState.value = SearchUiState.ErrorScrollLoading(failure)
         isNextPageLoading = false
@@ -117,19 +110,31 @@ class SearchViewModel @Inject constructor(
     }
     
     fun fillFilterData() {
-        viewModelScope.launch(Dispatchers.IO) {
-            selectedFilter = filterInteractor.getSavedFilterSettings(BaseFilterViewModel.FILTER_KEY)
-            log(thisName, "fillFilterData = $selectedFilter")
-            latestSearchQuery?.let {
-                searchVacancies(
-                    query = it, filter = selectedFilter, isFirstPage = currentPage == FIRST_PAGE
-                )
+        viewModelScope.launch {
+            val newSelectedFilter = filterInteractor.getSavedFilterSettings(BaseFilterViewModel.FILTER_KEY)
+            if (newSelectedFilter != selectedFilter) {
+                selectedFilter = newSelectedFilter
+                resetPagesState()
+                log(thisName, "fillFilterData = $selectedFilter")
+                latestSearchQuery?.let {
+                    searchVacancies(
+                        query = it, filter = selectedFilter, isFirstPage = currentPage == FIRST_PAGE
+                    )
+                }
             }
         }
     }
 
-    fun getFilterSettings() :SelectedFilter {
+    fun getFilterSettings(): SelectedFilter {
+        logger.log(thisName, "+++getFilterSettings+++")
         return selectedFilter
+    }
+    
+    private fun resetPagesState() {
+        logger.log(thisName, "+++resetPagesState+++")
+        currentPage = FIRST_PAGE
+        maxPages = FIRST_PAGE
+        vacancyList = emptyList()
     }
     
     companion object {

@@ -215,15 +215,8 @@
         <item name="android:textAlignment">viewStart</item>
         <item name="android:imeOptions">actionDone|flagNoExtractUi</item>
         <item name="android:inputType">textCapSentences</item>
-        <item name="android:maxLines">1</item>
-        <item name="android:singleLine">true</item>
         <item name="errorEnabled">false</item>
-
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/size_60dp</item>
-        <item name="boxCornerRadiusBottomEnd">@dimen/margin_12dp</item>
-        <item name="boxCornerRadiusBottomStart">@dimen/margin_12dp</item>
-        <item name="boxCornerRadiusTopEnd">@dimen/margin_12dp</item>
-        <item name="boxCornerRadiusTopStart">@dimen/margin_12dp</item>
     </style>
 </resources>

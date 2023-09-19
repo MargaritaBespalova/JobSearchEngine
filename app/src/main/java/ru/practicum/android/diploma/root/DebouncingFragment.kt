@@ -3,7 +3,7 @@ package ru.practicum.android.diploma.root
 import android.os.Handler
 import android.os.Looper
 import android.view.View
-import ru.practicum.android.diploma.util.DELAY_600_MILLIS
+import ru.practicum.android.diploma.util.DELAY_400_MILLIS
 import javax.inject.Inject
 
 class Debouncer @Inject constructor() {
@@ -17,7 +17,7 @@ class Debouncer @Inject constructor() {
             action()
             handler.postDelayed({
                 available = true
-            }, DELAY_600_MILLIS)
+            }, DELAY_400_MILLIS)
         }
     }
 }

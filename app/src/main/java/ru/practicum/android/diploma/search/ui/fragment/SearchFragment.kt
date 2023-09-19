@@ -66,33 +66,14 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         super.onStart()
     }
     
-    private fun changeTextInputLayoutEndIconMode() {
-        with(binding) {
-            if (ietSearch.text.isNullOrEmpty()) {
-                searchInputLayout.endIconMode = TextInputLayout.END_ICON_CUSTOM
-                searchInputLayout.endIconDrawable =
-                    AppCompatResources.getDrawable(requireContext(), R.drawable.ic_search)
-            } else {
-                searchInputLayout.requestFocus()
-                searchInputLayout.endIconMode = TextInputLayout.END_ICON_CLEAR_TEXT
-                searchInputLayout.endIconDrawable =
-                    AppCompatResources.getDrawable(requireContext(), R.drawable.ic_clear)
-            }
-        }
-    }
-    
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.log(thisName, "++++onViewCreated()++++")
+        
         drawFilterBtn()
         initListeners()
         initAdapter()
         initViewModelObserver()
-    }
-    
-    override fun onDestroyView() {
-        super.onDestroyView()
-        viewModel.onViewDestroyed()
     }
     
     private fun drawFilterBtn() {
@@ -159,15 +140,11 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                     viewModel.log(thisName, "++++OnScrollListener()++++")
                     
                     if (dy > 0) {
-                        activity?.findViewById<BottomNavigationView>(R.id.bottomNavigationView)?.visibility = View.GONE
                         val pos = (recycler.layoutManager as LinearLayoutManager).findLastVisibleItemPosition()
                         val itemsCount = adapter.itemCount
                         if (pos >= itemsCount - 5) {
                             viewModel.onScrolledBottom()
                         }
-                    }
-                    else {
-                        activity?.findViewById<BottomNavigationView>(R.id.bottomNavigationView)?.visibility = View.VISIBLE
                     }
                 }
             })
@@ -183,5 +160,20 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         findNavController().navigate(
             SearchFragmentDirections.actionSearchFragmentToDetailsFragment(vacancy.id)
         )
+    }
+    
+    private fun changeTextInputLayoutEndIconMode() {
+        with(binding) {
+            if (ietSearch.text.isNullOrEmpty()) {
+                searchInputLayout.endIconMode = TextInputLayout.END_ICON_CUSTOM
+                searchInputLayout.endIconDrawable =
+                    AppCompatResources.getDrawable(requireContext(), R.drawable.ic_search)
+            } else {
+                searchInputLayout.requestFocus()
+                searchInputLayout.endIconMode = TextInputLayout.END_ICON_CLEAR_TEXT
+                searchInputLayout.endIconDrawable =
+                    AppCompatResources.getDrawable(requireContext(), R.drawable.ic_clear)
+            }
+        }
     }
 }

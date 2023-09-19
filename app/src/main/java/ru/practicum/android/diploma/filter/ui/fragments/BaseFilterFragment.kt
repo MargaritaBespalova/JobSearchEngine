@@ -6,6 +6,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -39,7 +40,7 @@ class BaseFilterFragment : Fragment(R.layout.fragment_main_filter) {
         initListeners()
         initViewModelObserver()
     }
-    
+
     private fun initListeners() {
         with(binding) {
             area.debounceClickListener(debouncer) {
@@ -63,6 +64,8 @@ class BaseFilterFragment : Fragment(R.layout.fragment_main_filter) {
             salary.doOnTextChanged { text, _, _, _ ->
                 renderSalaryTextColor(amountTextLayout, text)
                 changeTextInputLayoutEndIconMode(text)
+                if (!btnGroup.isVisible)
+                    btnGroup.visibility = View.VISIBLE
             }
             applyBtn.debounceClickListener(debouncer) {
                 viewModel.saveFilterSettings()
@@ -79,6 +82,7 @@ class BaseFilterFragment : Fragment(R.layout.fragment_main_filter) {
             }
             showSalaryText.setOnClickListener {
                 checkbox.isChecked = !checkbox.isChecked
+                btnGroup.visibility = View.VISIBLE
             }
             checkbox.setOnCheckedChangeListener { _, isChecked ->
                 viewModel.changeCheckbox(isChecked)
@@ -127,7 +131,7 @@ class BaseFilterFragment : Fragment(R.layout.fragment_main_filter) {
             }
         }
     }
-    
+
     private fun showContent(selectedFilter: SelectedFilter) {
         with(binding) {
             showAreaField(selectedFilter)
@@ -149,7 +153,7 @@ class BaseFilterFragment : Fragment(R.layout.fragment_main_filter) {
     private fun showAreaField(selectedFilter: SelectedFilter) {
         val workPlace = StringBuilder()
         workPlace.append(selectedFilter.country?.name ?: "")
-        if (!selectedFilter.region?.name.isNullOrEmpty()) workPlace.append(", ")
+        if (!selectedFilter.country?.name.isNullOrEmpty() && !selectedFilter.region?.name.isNullOrEmpty()) workPlace.append(", ")
         workPlace.append(selectedFilter.region?.name ?: "")
         with(binding) {
             workPlaceText.setText(workPlace)
@@ -163,11 +167,11 @@ class BaseFilterFragment : Fragment(R.layout.fragment_main_filter) {
         else
             view.setImageResource(R.drawable.ic_clear)
     }
-    
+
     private fun showEmpty() {
         binding.btnGroup.visibility = View.GONE
     }
-    
+
     private fun changeTextInputLayoutEndIconMode(text: CharSequence?) {
         with(binding) {
             if (text.isNullOrEmpty()) {
@@ -181,7 +185,7 @@ class BaseFilterFragment : Fragment(R.layout.fragment_main_filter) {
             }
         }
     }
-    
+
     private fun renderEditTextColor(view: TextInputLayout, text: CharSequence?) {
         if (!text.isNullOrEmpty()) {
             view.defaultHintTextColor = ContextCompat.getColorStateList(
@@ -193,7 +197,7 @@ class BaseFilterFragment : Fragment(R.layout.fragment_main_filter) {
             )
         }
     }
-    
+
     private fun renderSalaryTextColor(view: TextInputLayout, text: CharSequence?) {
         if (!text.isNullOrEmpty()) {
             view.defaultHintTextColor = ContextCompat.getColorStateList(
